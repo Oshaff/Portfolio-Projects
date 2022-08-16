@@ -76,7 +76,7 @@ Join PortfolioProject..CovidVaccinations vac
 where dea.continent is not null
 order by 2,3
 
--- Creating View to store date for later visualizations
+-- Creating View to store data for later visualizations
 
 Create View Rolling_Vaccination_Total as 
 Select dea.continent, dea.location, dea.date, dea.population, vac.new_vaccinations, SUM(cast(vac.new_vaccinations as bigint)) OVER (Partition by dea.location Order by dea.location, dea.date) as Rolling_Vaccination_Total
